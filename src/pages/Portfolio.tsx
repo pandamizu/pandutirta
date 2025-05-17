@@ -1,6 +1,5 @@
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import '../App.css';
-import { useState } from 'react';
 
 const categories = [
   {
@@ -132,28 +131,6 @@ const categories = [
 ];
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState('');
-
-  const scrollToSection = (sectionId: string) => {
-    if (sectionId === 'contact') {
-      window.location.href = '/contact';
-      return;
-    }
-    if (sectionId === 'portfolio') {
-      window.location.href = '/portfolio';
-      return;
-    }
-    if (sectionId === 'home') {
-      window.location.href = '/';
-      return;
-    }
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionId);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient">
       <nav className="fixed top-0 w-full z-50 glass-nav">
@@ -161,17 +138,8 @@ export default function Portfolio() {
           <div className="flex items-center justify-between">
             <a href="/" className="text-2xl font-bold text-white">Pandu</a>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'services', 'portfolio', 'contact'].map((section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`text-white hover:text-white/80 capitalize ${
-                    activeSection === section ? 'font-semibold' : 'font-normal'
-                  }`}
-                >
-                  {section}
-                </button>
-              ))}
+              <a href="/" className="text-white hover:text-white/80">Home</a>
+              <a href="/contact" className="text-white hover:text-white/80">Contact</a>
             </div>
           </div>
         </div>
